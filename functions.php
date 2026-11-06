@@ -6,7 +6,7 @@ declare(strict_types=1);
  * All reusable logic lives here: validation, calculation, grading.
  */
 
-const SUBJECTS = ['Mathematics', 'English', 'Physics', 'Chemistry', 'Biology'];
+$subjects = ['Mathematics', 'English', 'Physics', 'Chemistry', 'Biology', 'History', 'Geography', 'Computer Science'];
 
 /** Escape any value before printing it in HTML (prevents XSS). */
 function e(?string $value): string
@@ -49,7 +49,7 @@ function validateScore(string $score): ?string
  * Validates the raw $_POST array safely (no undefined-index warnings).
  * Returns ['errors' => [...], 'name' => string, 'scores' => [subject => string]]
  */
-function validateInput(array $post): array
+function validateInput(array $post, array $subjects): array
 {
     $errors = [];
 
@@ -61,7 +61,7 @@ function validateInput(array $post): array
     $postedScores = isset($post['scores']) && is_array($post['scores']) ? $post['scores'] : [];
     $scores = [];
 
-    foreach (SUBJECTS as $subject) {
+    foreach ($subjects as $subject) {
         $raw = $postedScores[$subject] ?? '';
         $raw = is_string($raw) ? trim($raw) : '';
         $scores[$subject] = $raw;

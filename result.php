@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // 2. Validate the input.
-$checked = validateInput($_POST);
+$checked = validateInput($_POST, $subjects);
 $errors  = $checked['errors'];
 $name    = $checked['name'];
 $scores  = $checked['scores'];
