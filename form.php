@@ -32,7 +32,7 @@ $old    = $old ?? ['name' => '', 'scores' => []];
             <?php endif; ?>
         </div>
 
-        <?php foreach (SUBJECTS as $subject): ?>
+        <?php foreach ($subjects as $subject): ?>
             <div class="field">
                 <label for="<?= e($subject) ?>"><?= e($subject) ?></label>
                 <input type="text" inputmode="decimal"
